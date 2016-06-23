@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF8">
+        <title></title>
+        <style type="text/css">
+			body{font-family:Microsoft YaHei;font-style:italic;margin:0;padding:0}
+            #container {margin:0px auto;}
+            .param-table {background:#ffffff;border:1px solid #FFF;margin:12px 0;border-collapse:collapse;width:700px;padding:0;margin:0px auto;}
+            .param-table th {height:20px;background:#ff99cc;color:#000000;font-size:12px;font-weight:bold;text-align:center;border:1px solid #000;}
+            .param-table td {border-collapse:collapse;border:1px solid #000;font-size:12px;height:20px;text-align:center;}
+            .param-table .th-name {width:180px;height:20px;overflow:hidden}
+            .param-table .th-identifier {width:120px;height:20px;overflow:hidden}
+            .param-table .th-type {width:150px;height:20px;overflow:hidden}
+            .param-table .th-remark {width:250px;height:20px;overflow:hidden}
+            .param-table .td-name {}
+            .param-table .td-identifier {}
+            .param-table .td-type {color:#990000;}
+            .param-table .td-remark {color:#666;}
+            .param-table .tr-level-1 {background:#b8def5;}
+            .param-table .tr-level-2 {background:#eddff3;}
+            .param-table .tr-level-3 {background:#d0ebf2;}
+            .param-table .tr-level-4 {background:#e8f1df;}
+            .param-table .tr-level-5 {background:#f1e0df;}
+            .param-table .tr-level-6 {background:#f1ebdf;}
+            .param-table .tr-level-7 {background:gray;}
+            .param-table .tr-level-8 {background:silver;}
+            .param-table .tr-level-9 {background:gray;}
+            .param-table .tr-level-10 {background:silver;}
+            .param-table .tr-level-11 {background:gray;}
+            .param-table .tr-level-12 {background:silver;}
+            .param-table .tr-level-13 {background:gray;}
+        </style>
+    </head>
+    <body>
+        <div id="container">
+        #foreach($module in $project.moduleListOrdered)
+            #set($moduleNo = $velocityCount)
+            <div class="module">
+                <h1>$moduleNo&nbsp;$module.name</h1>
+                #foreach($page in $module.pageListOrdered)
+                    #set($pageNo = $velocityCount)
+                    <div class="page">
+                        <h2>$moduleNo.$pageNo&nbsp;$page.name</h2>
+                        #foreach($action in $page.actionListOrdered)
+                            #set($actionNo = $velocityCount)
+                            <div class="action">
+                            <h3>$moduleNo.$pageNo.$actionNo&nbsp;$action.name</h3>
+                            $action.table
+                            </div>
+                        #end
+                    </div>
+                #end
+            </div>
+        #end
+        </div>
+    </body>
+</html>
